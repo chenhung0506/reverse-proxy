@@ -23,8 +23,8 @@ services:
     restart: always
     #network_mode: "host"
     networks: 
-      - harbor_harbor
+      - nginx
 networks:
-  harbor_harbor:
+  nginx:
     external: true
-    name: harbor_harbor
+    name: nginx
