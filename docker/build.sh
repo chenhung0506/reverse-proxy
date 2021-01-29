@@ -7,8 +7,22 @@ REPO=chenhung0506
 CONTAINER=reverse-proxy
 GIT_HEAD="$(git rev-parse --short=7 HEAD)"
 GIT_DATE=$(git log HEAD -n1 --pretty='format:%cd' --date=format:'%Y%m%d-%H%M')
+PUSH_IMG=false
+while getopts 't:p' OPT; do
+    # echo "$OPT = $OPTARG"
+    case $OPT in
+        t) 
+           echo $GIT_DATE
+           GIT_DATE=$(date +"%Y%m%d-%H%M")
+           echo $GIT_DATE
+           ;;
+        p) PUSH_IMG=true;;
+    esac
+done
+
 TAG="${GIT_HEAD}-${GIT_DATE}"
-IMAGE_NAME=$REPO/$CONTAINER:$TAG
+DOCKER_IMAGE=$REPO/$CONTAINER:$TAG
+echo $DOCKER_IMAGE
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 BUILDROOT=$DIR
@@ -16,8 +30,12 @@ BUILDROOT=$DIR
 cd $BUILDROOT
 
 # Build docker --no-cache
-cmd="docker build -t $IMAGE_NAME -f $DIR/Dockerfile $BUILDROOT"
+cmd="docker build -t $DOCKER_IMAGE -f $DIR/Dockerfile $BUILDROOT"
 echo $cmd
 eval $cmd
 
-echo $IMAGE_NAME
+echo 'PUSH_IMG:' $PUSH_IMG
+if [ $PUSH_IMG = 'true' ] ; then
+    cmd="docker push $DOCKER_IMAGE"
+    echo $cmd && eval $cmd
+fi
