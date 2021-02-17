@@ -7,7 +7,7 @@ envsubst '
 $$NAMESERVER
 ' < /etc/nginx/nginx.template.conf > /etc/nginx/nginx.conf
 
-crontab -l | { cat; echo "*/1 * * * * /usr/bin/certbot renew"; } | crontab -
+crontab -l | { cat; echo "0 6 * * * /usr/bin/certbot renew"; } | crontab -
 crond
 
 nginx -t
