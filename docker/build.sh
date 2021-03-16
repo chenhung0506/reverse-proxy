@@ -1,9 +1,9 @@
 #!/bin/bash
 docker rm -f reverse-proxy
-docker rmi chenhung0506/reverse-proxy:$(docker images | grep reverse-proxy | awk 'NR==1{print$2}')
+docker rmi harbor.chlin.tk/nginx/reverse-proxy:$(docker images | grep reverse-proxy | awk 'NR==1{print$2}')
 set -e
 
-REPO=chenhung0506
+REPO=harbor.chlin.tk/nginx
 CONTAINER=reverse-proxy
 GIT_HEAD="$(git rev-parse --short=7 HEAD)"
 GIT_DATE=$(git log HEAD -n1 --pretty='format:%cd' --date=format:'%Y%m%d-%H%M')
