@@ -11,7 +11,7 @@ services:
     env_file:
       - dev.env
     volumes:
-      - /etc/localtime:/etc/localtime
+      - /etc/localtime:/etc/localtime:ro
       - ./conf.d:/etc/nginx/conf.d/
       - ./cert/harbor_cert:/etc/cert
       - ./cert/live:/etc/letsencrypt/live
@@ -37,7 +37,7 @@ services:
       - 8336:8336
     environment:
       - IS_LOADED=LOAD_ENV_FILE_SUCCESS
-      - PORT=80
+      - PORT=8336
       - LOG_LEVEL=INFO
       - LOG_FOLDER_PATH=logs/
       - DB_HOST=172.17.0.1
@@ -66,7 +66,6 @@ services:
       - LOG_FOLDER_PATH=logs/
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ~/etc/timezone:/etc/localtime:ro
       - ~/volumes/vote:/usr/src/app/logs
     ports: 
       - 8333:8333
