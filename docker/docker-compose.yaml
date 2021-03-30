@@ -35,7 +35,7 @@ services:
       - ~/.ssh/known_hosts:/root/.ssh/known_hosts
     ports: 
       - 8336:8336
-    env_file:
+    environment:
       - IS_LOADED=LOAD_ENV_FILE_SUCCESS
       - PORT=80
       - LOG_LEVEL=INFO
