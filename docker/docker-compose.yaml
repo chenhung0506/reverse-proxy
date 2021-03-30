@@ -29,9 +29,9 @@ services:
     environment:
       - TZ=Asia/Taipei
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ~/volumes/university:/usr/src/app/logs
       - ~/volumes/university/upload:/usr/src/app/university/upload
-      - ~/etc/timezone:/etc/localtime:ro
       - ~/.ssh/known_hosts:/root/.ssh/known_hosts
     ports: 
       - 8336:8336
@@ -65,9 +65,9 @@ services:
       - CALL_DIRECTION=outbound
       - LOG_FOLDER_PATH=logs/
     volumes:
-      - ~/volumes/vote:/usr/src/app/logs
+      - /etc/localtime:/etc/localtime:ro
       - ~/etc/timezone:/etc/localtime:ro
-      - ~/.ssh/known_hosts:/root/.ssh/known_hosts
+      - ~/volumes/vote:/usr/src/app/logs
     ports: 
       - 8333:8333
     healthcheck:
