@@ -5,10 +5,9 @@ set -e
 
 REPO=harbor.chlin.tk/nginx
 CONTAINER=reverse-proxy
-GIT_HEAD="$(git rev-parse --short=7 HEAD)"
-GIT_DATE=$(git log HEAD -n1 --pretty='format:%cd' --date=format:'%Y%m%d-%H%M')
 PUSH_IMG=false
-while getopts 't:p' OPT; do
+export TAG='latest'
+while getopts 't:pv' OPT; do
     # echo "$OPT = $OPTARG"
     case $OPT in
         t) 
@@ -17,10 +16,11 @@ while getopts 't:p' OPT; do
            echo $GIT_DATE
            ;;
         p) PUSH_IMG=true;;
+        v) export TAG=$(git rev-parse --short=7 HEAD)-$(git log HEAD -n1 --pretty='format:%cd' --date=format:'%Y%m%d-%H%M');;
     esac
 done
 
-TAG="${GIT_HEAD}-${GIT_DATE}"
+
 DOCKER_IMAGE=$REPO/$CONTAINER:$TAG
 echo $DOCKER_IMAGE
 
