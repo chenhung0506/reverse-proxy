@@ -11,4 +11,4 @@ done
 
 echo $TAG
 export TAG=$TAG
-docker-compose -f ./docker-compose.yaml up -d reverse-proxy vote mysql university
+docker-compose -f ./docker-compose.yaml up -d reverse-proxy vote mysql university wedding

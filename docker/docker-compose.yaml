@@ -23,8 +23,18 @@ services:
     restart: always
     networks: 
       - nginx
+  wedding:
+    container_name: wedding
+    image: harbor.chlin.tk/vue/wedding:1ffab51_20210407035641
+    volumes:
+      - /etc/localtime:/etc/localtime
+    ports:
+      - 8050:8050
+    restart: always
+    networks: 
+      - nginx
   university:
-    image: harbor.chlin.tk/python/university:a89b662-20210329-1151
+    image: harbor.chlin.tk/python/university:d5f93b7-20210401-0054
     container_name: university
     environment:
       - TZ=Asia/Taipei
