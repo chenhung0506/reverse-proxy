@@ -11,13 +11,12 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime
       - ./conf.d:/etc/nginx/conf.d/
+    environment:
+      BF_IP: http://192.168.3.216
     ports:
-      - 8888:80
-    network_mode: "host"
+      - target: 8336
+        published: 8336
+        protocol: tcp
+        mode: host
+    # network_mode: "host"
     restart: always
-    networks: 
-      - emotibot
-networks:
-  emotibot:
-    external: true
-    name: emotibot
