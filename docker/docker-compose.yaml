@@ -12,10 +12,14 @@ services:
       - /etc/localtime:/etc/localtime
       - ./conf.d:/etc/nginx/conf.d/
     environment:
-      BF_IP: http://192.168.3.216
+      BF_IP: 172.12.0.1
     ports:
-      - target: 8336
-        published: 8336
+      - target: 80
+        published: 80
+        protocol: tcp
+        mode: host
+      - target: 8080
+        published: 8080
         protocol: tcp
         mode: host
     # network_mode: "host"
