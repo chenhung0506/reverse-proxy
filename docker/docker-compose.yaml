@@ -25,7 +25,7 @@ services:
       - nginx
   wedding:
     container_name: wedding
-    image: harbor.chlin.tk/vue/wedding:1ffab51_20210407035641
+    image: harbor.chlin.tk/vue/wedding:8548fb0_20210407120454
     volumes:
       - /etc/localtime:/etc/localtime
     ports:
