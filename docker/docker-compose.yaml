@@ -98,7 +98,7 @@ services:
       MYSQL_USER: deployer
       MYSQL_PASSWORD: password
     ports:
-      - "3306:3306"
+      - "172.17.0.1:3306:3306"
     networks:
       - nginx
 networks:
