@@ -34,6 +34,17 @@ services:
     restart: always
     networks: 
       - nginx
+  linebot-linux:
+    container_name: linebot-linux
+    image: harbor.chlin.tk/python/linebot-linux:8317dba-20210508-1846
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ~/volumes/linebot-linux:/usr/src/app/logs
+    ports:
+      - 3001:3001
+    restart: always
+    networks: 
+      - nginx
   wedding:
     container_name: wedding
     image: harbor.chlin.tk/vue/wedding:8548fb0_20210407120454
