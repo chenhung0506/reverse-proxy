@@ -34,12 +34,12 @@ services:
     restart: always
     networks: 
       - nginx
-  linebot-linux:
-    container_name: linebot-linux
-    image: harbor.chlin.tk/python/linebot-linux:8317dba-20210508-1846
+  linebot:
+    container_name: linebot
+    image: harbor.chlin.tk/python/linebot:1e156ae-20210509-0158
     volumes:
       - /etc/localtime:/etc/localtime
-      - ~/volumes/linebot-linux:/usr/src/app/logs
+      - ~/volumes/linebot:/usr/src/app/logs
     ports:
       - 3001:3001
     restart: always
