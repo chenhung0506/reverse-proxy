@@ -18,8 +18,19 @@ services:
     ports:
       - 80:80
       - 443:443
+    restart: always
+    networks: 
+      - nginx
+  resume:
+    container_name: resume
+    image: harbor.chlin.tk/vue/resume:ccb87bb-20210506-0214
+    volumes:
+      - /etc/localtime:/etc/localtime
     environment:
-      LB_VIDEOS_URL: 172.17.0.1:80
+      - IS_LOADED=LOAD_ENV_FILE_SUCCESS
+      - PORT=3000
+    ports:
+      - 3000:3000
     restart: always
     networks: 
       - nginx
