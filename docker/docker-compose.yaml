@@ -78,10 +78,6 @@ services:
   websocket-ui:
     image: harbor.chlin.tk/vue/websocket-ui:78ee43a-20210510-0050
     container_name: websocket-ui
-    environment:
-      - TZ=Asia/Taipei
-    volumes:
-      - /etc/timezone:/etc/localtime:ro
     ports: 
       - 3003:80
     restart: always
