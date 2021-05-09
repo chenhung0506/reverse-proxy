@@ -76,10 +76,10 @@ services:
     networks: 
       - nginx
   websocket-ui:
-    image: harbor.chlin.tk/vue/websocket-ui:78ee43a-20210510-0050
+    image: harbor.chlin.tk/vue/websocket-ui:e2be673-20210510-0212
     container_name: websocket-ui
     ports: 
-      - 3003:80
+      - 3003:3003
     restart: always
     networks: 
       - nginx
