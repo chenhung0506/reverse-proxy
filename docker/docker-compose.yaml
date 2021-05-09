@@ -62,6 +62,31 @@ services:
       - DB_ACCOUNT='bdef9ef0984947'
       - DB_PASSWORD='0b65d70f'
       - DB_DB='heroku_d38736f240fb4e6'
+  websocket:
+    image: harbor.chlin.tk/java/websocket:c64d70c-20210509-1623
+    container_name: websocket
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      # - ~/volumes/websocket:/usr/src/app/logs
+      - /etc/timezone:/etc/localtime:ro
+    ports: 
+      - 3002:8080
+    restart: always
+    networks: 
+      - nginx
+  websocket-ui:
+    image: harbor.chlin.tk/vue/websocket-ui:78ee43a-20210510-0050
+    container_name: websocket-ui
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - /etc/timezone:/etc/localtime:ro
+    ports: 
+      - 3003:80
+    restart: always
+    networks: 
+      - nginx
   wedding:
     container_name: wedding
     image: harbor.chlin.tk/vue/wedding:8548fb0_20210407120454
