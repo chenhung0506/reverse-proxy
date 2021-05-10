@@ -76,7 +76,7 @@ services:
     networks: 
       - nginx
   websocket-ui:
-    image: harbor.chlin.tk/vue/websocket-ui:e2be673-20210510-0212
+    image: harbor.chlin.tk/vue/websocket-ui:e2be673-20210510-1124
     container_name: websocket-ui
     ports: 
       - 3003:3003
