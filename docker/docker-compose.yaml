@@ -23,7 +23,7 @@ services:
       - nginx
   resume:
     container_name: resume
-    image: harbor.chlin.tk/vue/resume:ccb87bb-20210506-0214
+    image: harbor.chlin.tk/vue/resume:latest
     volumes:
       - /etc/localtime:/etc/localtime
     environment:
