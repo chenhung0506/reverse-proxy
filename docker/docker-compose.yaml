@@ -161,9 +161,9 @@ services:
       - "172.17.0.1:3306:3306"
     networks:
       - nginx
-  redis:
+  redis-linch:
     restart: always
-    container_name: redis
+    container_name: redis-linch
     image: redis:5.0.5-alpine 
     ports:
       - 172.17.0.1:6379:6379
