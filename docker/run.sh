@@ -11,4 +11,4 @@ done
 
 echo $TAG
 export TAG=$TAG
-docker-compose -f ./docker-compose.yaml up -d reverse-proxy resume linebot websocket websocket-ui vote mysql university wedding
+docker-compose -f ./docker-compose.yaml up -d reverse-proxy resume linebot websocket websocket-ui vote mysql redis university wedding
