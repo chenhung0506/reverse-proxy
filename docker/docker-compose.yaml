@@ -36,7 +36,7 @@ services:
       - nginx
   linebot:
     container_name: linebot
-    image: harbor.chlin.tk/python/linebot:01e9f01-20210512-0335
+    image: harbor.chlin.tk/python/linebot:latest
     volumes:
       - /etc/localtime:/etc/localtime
       - ~/volumes/linebot:/usr/src/app/logs
@@ -160,6 +160,16 @@ services:
     ports:
       - "172.17.0.1:3306:3306"
     networks:
+      - nginx
+  redis:
+    restart: always
+    container_name: redis
+    image: redis:5.0.5-alpine 
+    ports:
+      - 172.17.0.1:6379:6379
+    volumes:
+      - ~/volumes/redis-data:/data
+    networks: 
       - nginx
 networks:
   nginx:
