@@ -8,8 +8,6 @@ services:
       options:
         max-file: "10"
         max-size: "100m"
-    env_file:
-      - dev.env
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/letsencrypt/live:/etc/letsencrypt/live:ro
@@ -135,6 +133,8 @@ services:
       - ~/volumes/fb:/usr/src/app/logs
     ports: 
       - 3010:3010
+    env_file:
+      - dev.env
     environment:
       - IS_LOADED=LOAD_ENV_FILE_SUCCESS
       - PORT=3010
