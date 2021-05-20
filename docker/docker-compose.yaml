@@ -12,9 +12,10 @@ services:
       - dev.env
     volumes:
       - /etc/localtime:/etc/localtime:ro
+      - /etc/letsencrypt/live:/etc/letsencrypt/live:ro
       - ./conf.d:/etc/nginx/conf.d/
       - ./cert/harbor_cert:/etc/cert
-      - ./cert/live:/etc/letsencrypt/live
+      - ./cert/product:/etc/letsencrypt/product
     ports:
       - 80:80
       - 443:443
