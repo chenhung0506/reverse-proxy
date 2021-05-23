@@ -149,6 +149,24 @@ services:
     restart: always
     networks: 
       - nginx
+  btc:
+    image: harbor.chlin.tk/python/btc:latest
+    container_name: btc
+    environment:
+      - TZ=Asia/Taipei
+      - IS_LOADED=LOAD_ENV_FILE_SUCCESS
+      - PORT=3007
+      - LOG_LEVEL=INFO
+      - LOG_FOLDER_PATH=logs/
+      - DB_HOST=172.17.0.1
+      - DB_PORT=3306
+      - DB_ACCOUNT='root'
+      - DB_PASSWORD='password'
+    volumes:
+      - ~/volumes/btc:/usr/src/app/logs
+      - ~/etc/timezone:/etc/localtime:ro
+    ports:
+      - 3007:3007
   vote:
     image: harbor.chlin.tk/python/vote:8d8530f-20210310-1843 
     container_name: vote
