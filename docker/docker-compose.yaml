@@ -147,6 +147,30 @@ services:
     restart: always
     networks: 
       - nginx
+  fbt:
+    image: harbor.chlin.tk/python/fb:fb-test
+    container_name: fbt
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ~/volumes/fbt:/usr/src/app/logs
+    ports: 
+      - 3011:3011
+    env_file:
+      - dev.env
+    environment:
+      - IS_LOADED=LOAD_ENV_FILE_SUCCESS
+      - PORT=3011
+      - LOG_LEVEL=INFO
+      - LOG_FOLDER_PATH=logs/
+      - DB_HOST=172.17.0.1
+      - DB_PORT=3306
+      - DB_ACCOUNT='root'
+      - DB_PASSWORD='password'
+    restart: always
+    networks: 
+      - nginx
   btc:
     image: harbor.chlin.tk/python/btc:latest
     container_name: btc
