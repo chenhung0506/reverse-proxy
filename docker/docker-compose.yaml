@@ -134,7 +134,7 @@ services:
     ports: 
       - 3010:3010
     env_file:
-      - dev.env
+      - emoti.env
     environment:
       - IS_LOADED=LOAD_ENV_FILE_SUCCESS
       - PORT=3010
