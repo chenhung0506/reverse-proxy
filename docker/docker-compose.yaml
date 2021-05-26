@@ -124,7 +124,7 @@ services:
     networks: 
       - nginx
   fb:
-    image: harbor.chlin.tk/python/fb:latest
+    image: harbor.chlin.tk/python/fb:fb-test
     container_name: fb
     environment:
       - TZ=Asia/Taipei
