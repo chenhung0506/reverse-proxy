@@ -94,6 +94,30 @@ services:
     restart: always
     networks: 
       - nginx
+  university-demo:
+    image: harbor.chlin.tk/python/university-demo:latest
+    container_name: university-demo
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ~/volumes/university:/usr/src/app/logs
+      - ~/volumes/university/upload:/usr/src/app/university/upload
+      - ~/.ssh/known_hosts:/root/.ssh/known_hosts
+    ports: 
+      - 3012:3012
+    environment:
+      - IS_LOADED=LOAD_ENV_FILE_SUCCESS
+      - PORT=3012
+      - LOG_LEVEL=INFO
+      - LOG_FOLDER_PATH=logs/
+      - DB_HOST=172.17.0.1
+      - DB_PORT=3307
+      - DB_ACCOUNT='root'
+      - DB_PASSWORD='123456'
+    restart: always
+    networks: 
+      - nginx
   university:
     image: harbor.chlin.tk/python/university:d5f93b7-20210401-0054
     container_name: university
