@@ -11,4 +11,4 @@ done
 
 echo $TAG
 export TAG=$TAG
-docker-compose -f ./docker-compose.yaml up -d reverse-proxy resume linebot websocket websocket-ui mysql redis university university-demo fb btc
+docker-compose -f ./docker-compose.yaml up -d reverse-proxy resume avalon websocket websocket-ui mysql redis university university-demo fb btc
