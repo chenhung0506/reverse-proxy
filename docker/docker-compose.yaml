@@ -88,6 +88,8 @@ services:
     image: harbor.chlin.tk/vue/avalon:latest 
     container_name: avalon
     restart: always
+    environment:
+      - PORT=3004
     ports: 
       - "3004:3004"
   wedding:
