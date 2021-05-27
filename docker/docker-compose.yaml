@@ -84,6 +84,12 @@ services:
     restart: always
     networks: 
       - nginx
+  avalon:
+    image: harbor.chlin.tk/vue/avalon:latest 
+    container_name: avalon
+    restart: always
+    ports: 
+      - "3004:3004"
   wedding:
     container_name: wedding
     image: harbor.chlin.tk/vue/wedding:8548fb0_20210407120454
