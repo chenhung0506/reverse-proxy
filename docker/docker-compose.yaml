@@ -64,20 +64,20 @@ services:
       - REDIS_IP=172.17.0.1
       - REDIS_PORT=6379
   websocket:
-    image: harbor.chlin.tk/java/websocket:c64d70c-20210509-1623
+    image: harbor.chlin.tk/java/websocket:54646f4-20210528-0409 
     container_name: websocket
     environment:
       - TZ=Asia/Taipei
     volumes:
       # - ~/volumes/websocket:/usr/src/app/logs
-      - /etc/timezone:/etc/localtime:ro
+      - /etc/localtime:/etc/localtime:ro
     ports: 
       - 3002:8080
     restart: always
     networks: 
       - nginx
   websocket-ui:
-    image: harbor.chlin.tk/vue/websocket-ui:e2be673-20210510-1124
+    image: harbor.chlin.tk/vue/websocket-ui:latest
     container_name: websocket-ui
     ports: 
       - 3003:3003
