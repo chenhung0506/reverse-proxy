@@ -64,7 +64,7 @@ services:
       - REDIS_IP=172.17.0.1
       - REDIS_PORT=6379
   websocket:
-    image: harbor.chlin.tk/java/websocket:54646f4-20210528-0409 
+    image: harbor.chlin.tk/java/websocket:dcf258b-20210531-0533
     container_name: websocket
     environment:
       - TZ=Asia/Taipei
