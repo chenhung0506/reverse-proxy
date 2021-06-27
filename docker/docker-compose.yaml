@@ -168,7 +168,7 @@ services:
     ports: 
       - 3010:3010
     env_file:
-      - emoti.env
+      - easycard.env
     environment:
       - IS_LOADED=LOAD_ENV_FILE_SUCCESS
       - PORT=3010
@@ -182,7 +182,7 @@ services:
     networks: 
       - nginx
   fbt:
-    image: harbor.chlin.tk/python/fb:fb-test
+    image: harbor.chlin.tk/python/fb:latest
     container_name: fbt
     environment:
       - TZ=Asia/Taipei
@@ -191,17 +191,17 @@ services:
       - ~/volumes/fbt:/usr/src/app/logs
     ports: 
       - 3011:3011
-    env_file:
-      - dev.env
     environment:
       - IS_LOADED=LOAD_ENV_FILE_SUCCESS
       - PORT=3011
       - LOG_LEVEL=INFO
       - LOG_FOLDER_PATH=logs/
-      - DB_HOST=172.17.0.1
-      - DB_PORT=3306
-      - DB_ACCOUNT='root'
-      - DB_PASSWORD='password'
+      - WELCOME_MESSAGE='{"data":"感謝與我們聯繫~\n本平台不提供對話服務，如有問題可點選下方選項。"}'
+      - MESSAGE_WELCOME='true'
+      - GET_START_WELCOME='false'
+      - VERIFY_TOKEN='123456'
+      - ACCESS_TOKEN='{"105566678410846":"EAAk4H5wUh88BAOpXY9vN56Sc11hFtNCZCVyWQkvijsDzcPaUZCuZCKYCrbfVZCUZCS4PfEZArJLhNHUrUf0ZCUulB5DnABqzBVdkVVGEosfNcV5lAlD6tmLdkZC273Ihd06qHQSO30vPV0AWdZCuyz8cqgqGrtiQSyrGhOEr8ytdCjmWbD6IjJFc5","100903557951068":"EAAGJwZCK6hFUBANZCXTgn9pc6YnvBZBwKFGYHUjVEop2ZBT1CDBpg40G6WDyt8nIjiUe2nKZCr3fZBVAi29QoDL6SeZCDtOoGQXjb4hoTsf0sp1MZCZBOWjXVw420V7QSEUGFlF2ZCTFIvVD3aeapAkiSCmnz7HJGRHLuLMSwrIiTmS90RgCqSSi4V","108433087175265":"EAAFNM3mDiKcBAI1S8R6rIZAKZCiUZC33RDkfWpJvdpwHoT6uZC5uGdhjjeGDCFklGra44ZA9JccSAdZAp0TAG9KexcjEii3Mb7ZCt8n9zUwLwkibAjgbIt0N0nSPFaVYWGRrPs619xhO7sxRFUCdBLZCtzfv1p0cTxgR01EPmYO9BSmEZA7hTQhHg","107881503944278":"EAAFNM3mDiKcBANqDgl2xfqpTQCqNjqkcZAWtDHaUkMCmaBcPy8RMAK4GwnmTvtarTsRZArWMaNcBjpJnu0HbOnZAZBi6JJvTSyvfaJsEHHOrCmE5wDKEZAmADLWtmDwDB0u19EDeeNkjjmkmsUZAGMmKrj1NG8z1IhFZBrbXZBstRmWZBXNKbfMMe","106728057354969":"EAAFNM3mDiKcBAHtM9hRjlS1R6KL3vuYfwv2dlvZBE27wlLZA8j9vkv0L9lk4ZADMwE6dK05XCdZB0p8Tdj7FsG7FjbG9AUTnw9YdaPCOP8UNPhkEp7XmYAmKWw9z8FSO0gu2y6cjs3t3iAzgxbdoUdyY4ZCJkcXBmn4hrt0AEl1NwGocFsrUn"}'
+      - PAYLOAD='[{"attachment":{"type":"template","payload":{"template_type":"generic","elements":[{"title":"快速服務","image_url":"https://i.postimg.cc/bNPpTY4v/fbbanner01-906x600.png","subtitle":"請左右滑動卡片以完整呈現選單","default_action":{"type":"web_url","url":"https://www.easycard.com.tw","webview_height_ratio":"tall"},"buttons":[{"type":"web_url","url":"https://ezweb.easycard.com.tw/eccl2/apply!reportloss.action","title":"我要掛失"},{"type":"web_url","url":"https://www.easycard.com.tw/introduction?id=3","title":"退卡方式說明"},{"type":"web_url","url":"https://shop.easycard.com.tw/ttWeb/search.aspx","title":"退費進度查詢"}]},{"title":"快速服務","image_url":"https://i.postimg.cc/MH7xSgfx/fbbanner02-906x600.png","subtitle":"請左右滑動卡片以完整呈現選單","default_action":{"type":"web_url","url":"https://www.easycard.com.tw/","webview_height_ratio":"tall"},"buttons":[{"type":"web_url","url":"https://ezweb.easycard.com.tw/search/CardSearch.php","title":"悠遊卡交易紀錄"},{"type":"web_url","url":"https://ezweb.easycard.com.tw/eccl2/apply!Inquire.action","title":"票卡效期查詢"},{"type":"web_url","url":"https://ezweb.easycard.com.tw/eccl2/apply.action","title":"記名申請"}]}]}}},{"attachment":{"type":"template","payload":{"template_type":"button","text":"也可以找客服小幫手協助您~","buttons":[{"type":"web_url","url":"https://chatbot.easycard.com.tw/chatbot/#/robotchat?platform=FB","title":"小幫手嗶寶"}]}}},{"text":"或撥悠遊卡客服專線\n412-8880\n(手機及金馬地區請加02)"}]'
     restart: always
     networks: 
       - nginx
